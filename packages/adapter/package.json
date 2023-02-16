@@ -1,0 +1,6 @@
+{
+  "private": true,
+  "name": "adapter",
+  "main": "index_node.js",
+  "browser": "index_browser.js"
+}

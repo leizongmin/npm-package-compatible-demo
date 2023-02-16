@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "scripts": {
+    "build-browser": "esbuild --bundle --outfile=bundle/app_browser.js app_browser.js",
+    "build": "npm run build-browser"
+  }
+}
