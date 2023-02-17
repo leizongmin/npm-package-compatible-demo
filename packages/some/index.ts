@@ -1,6 +1,6 @@
-const fs = require("fs");
-const util = require("util");
-const adapter = require("adapter");
+import * as fs from "fs";
+import * as util from "util";
+import * as adapter from "adapter";
 
 console.log("from some: isNode=%s", adapter.isNode());
 console.log("from some: isBrowser=%s", adapter.isBrowser());

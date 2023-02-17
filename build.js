@@ -37,7 +37,7 @@ const mockNodeJsBuiltinModulesPlugin = {
 
 async function main() {
   await esbuild.build({
-    entryPoints: ["app_browser.js"],
+    entryPoints: ["app_browser.ts"],
     outfile: "bundle/app_browser.js",
     bundle: true,
     platform: "browser",

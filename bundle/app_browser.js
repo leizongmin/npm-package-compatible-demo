@@ -1,8 +1,29 @@
 (() => {
+  var __create = Object.create;
+  var __defProp = Object.defineProperty;
+  var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
   var __getOwnPropNames = Object.getOwnPropertyNames;
+  var __getProtoOf = Object.getPrototypeOf;
+  var __hasOwnProp = Object.prototype.hasOwnProperty;
   var __commonJS = (cb, mod) => function __require() {
     return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
   };
+  var __copyProps = (to, from, except, desc) => {
+    if (from && typeof from === "object" || typeof from === "function") {
+      for (let key of __getOwnPropNames(from))
+        if (!__hasOwnProp.call(to, key) && key !== except)
+          __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+    }
+    return to;
+  };
+  var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+    // If the importer is in node compatibility mode or this is not an ESM
+    // file that has been converted to a CommonJS file using a Babel-
+    // compatible transform (i.e. "__esModule" has not been set), then set
+    // "default" to the CommonJS "module.exports" for node compatibility.
+    isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+    mod
+  ));
 
   // node_modules/has-symbols/shams.js
   var require_shams = __commonJS({
@@ -1785,17 +1806,17 @@
   // packages/adapter/index_browser.js
   var require_index_browser = __commonJS({
     "packages/adapter/index_browser.js"(exports, module) {
-      var util = require_util();
-      console.log("util module on adapter:", util);
-      function isNode() {
+      var util2 = require_util();
+      console.log("util module on adapter:", util2);
+      function isNode3() {
         return false;
       }
-      function isBrowser() {
+      function isBrowser3() {
         return true;
       }
       module.exports = {
-        isNode,
-        isBrowser
+        isNode: isNode3,
+        isBrowser: isBrowser3
       };
     }
   });
@@ -1803,11 +1824,11 @@
   // packages/adapter/browser/fs.js
   var require_fs = __commonJS({
     "packages/adapter/browser/fs.js"(exports, module) {
-      function readFileSync(name) {
+      function readFileSync2(name) {
         return `cannot read file: ${name}`;
       }
       module.exports = {
-        readFileSync
+        readFileSync: readFileSync2
       };
     }
   });
@@ -1821,25 +1842,24 @@
     }
   });
 
-  // packages/some/index.js
-  var require_some = __commonJS({
-    "packages/some/index.js"() {
-      var fs = require_fs();
-      var util = require_empty();
-      var adapter2 = require_index_browser();
-      console.log("from some: isNode=%s", adapter2.isNode());
-      console.log("from some: isBrowser=%s", adapter2.isBrowser());
-      console.log(fs.readFileSync(__filename, "utf8"));
-      if (adapter2.isBrowser()) {
-        console.log("this is browser env");
-      }
-      console.log("util module on some:", util);
-    }
-  });
+  // app_browser.ts
+  var adapter2 = __toESM(require_index_browser());
 
-  // app_browser.js
-  var adapter = require_index_browser();
-  var some = require_some();
-  console.log("isNode=%s", adapter.isNode());
-  console.log("isBrowser=%s", adapter.isBrowser());
+  // packages/some/index.ts
+  var some_exports = {};
+  var fs = __toESM(require_fs());
+  var util = __toESM(require_empty());
+  var adapter = __toESM(require_index_browser());
+  console.log("from some: isNode=%s", adapter.isNode());
+  console.log("from some: isBrowser=%s", adapter.isBrowser());
+  console.log(fs.readFileSync(__filename, "utf8"));
+  if (adapter.isBrowser()) {
+    console.log("this is browser env");
+  }
+  console.log("util module on some:", util);
+
+  // app_browser.ts
+  console.log("isNode=%s", adapter2.isNode());
+  console.log("isBrowser=%s", adapter2.isBrowser());
+  console.log(some_exports);
 })();
