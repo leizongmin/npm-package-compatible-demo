@@ -3,3 +3,4 @@ const some = require("some");
 
 console.log("isNode=%s", adapter.isNode());
 console.log("isBrowser=%s", adapter.isBrowser());
+console.log(some);

@@ -1,7 +1,16 @@
 {
   "private": true,
   "scripts": {
-    "build-browser": "esbuild --bundle --outfile=bundle/app_browser.js app_browser.js",
-    "build": "npm run build-browser"
+    "build-browser": "node build.js",
+    "build": "npm run build-browser",
+    "run-browser": "node bundle/app_browser.js",
+    "run-node": "node app_node.js",
+    "run": "npm run run-node && npm run run-browser"
+  },
+  "devDependencies": {
+    "esbuild": "^0.17.8"
+  },
+  "dependencies": {
+    "util": "^0.12.5"
   }
 }
